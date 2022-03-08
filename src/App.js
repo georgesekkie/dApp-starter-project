@@ -175,47 +175,49 @@ const App = () => {
     <div className="mainContainer">
       <div className="dataContainer">
         <div className="header">
-        <span role="img" aria-label="hand-wave">👋</span> WELCOME!
+          <h2>
+            <span role="img" aria-label="hand-wave">👋</span> NFT <span className="colorPink">Waving</span> mint project
+          </h2>
         </div>
         <div className="bio">
-          イーサリアムウォレットを接続して、メッセージを作成したら、<span role="img" aria-label="hand-wave">👋</span>を送ってください<span role="img" aria-label="shine">✨</span>
+        Please send <span role="img" aria-label="hand-wave">👋</span>  to the developer of this app to become a promising future entrepreneur in Web3.<span role="img" aria-label="shine">✨</span>
         </div>
         <br></br>
         {/* ウォレットコネクトのボタンを実装 */}
         {!currentAccount && (
-        <button className="waveButton" onClick={connectWallet} >
-            Connect Wallet
-        </button>
+          <button className="waveButton" onClick={connectWallet} >
+              Connect Wallet
+          </button>
         )}
-        {currentAccount && (
-        <button className="waveButton">
-            Wallet Connected
-        </button>
-        )}
-        {/* waveボタンにwave関数を連動 */}
-        {currentAccount && (
-        <button className="waveButton" onClick={wave}>
-          Wave at Me
-        </button>)
-        }
+
+      
+     
+        
         {/* メッセージボックスを実装*/}
-        {currentAccount && (<textarea name="messageArea"
-            placeholder="メッセージはこちら"
+        {currentAccount && (<textarea name="messageArea" className="messageBox"
+            placeholder="Message is here!"
             type="text"
             id="message"
             value={messageValue}
             onChange={e => setMessageValue(e.target.value)} />)
         }
+        {/* waveボタンにwave関数を連動 */}
+        {currentAccount && (
+          <button className="wavemeButton" onClick={wave}>
+            Send a message and <span role="img" aria-label="hand-wave">👋</span> at Me
+          </button>)
+        }
+ 
         {/* 履歴を表示する */}
         {currentAccount && (
-        allWaves.slice(0).reverse().map((wave, index) => {
-          return (
-            <div key={index} style={{ backgroundColor: "#F8F8FF", marginTop: "16px", padding: "8px" }}>
-              <div>Address: {wave.address}</div>
-              <div>Time: {wave.timestamp.toString()}</div>
-              <div>Message: {wave.message}</div>
-            </div>)
-        })
+          allWaves.slice(0).reverse().map((wave, index) => {
+            return (
+              <div key={index} style={{ color: "ffffff", backgroundColor: "#040719", marginTop: "16px", padding: "8px" }}>
+                <div className="textColor" >SenderAddress: {wave.address}</div>
+                <div className="textColor" >Time: {wave.timestamp.toString()}</div>
+                <div className="textColor" >Message: {wave.message}</div>
+              </div>)
+          })
         )}
       </div>
     </div>
